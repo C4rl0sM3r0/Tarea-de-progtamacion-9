@@ -1,23 +1,29 @@
 package com.datasoft.proyectoventas.menu;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
 public class MenuController {
 
     private void cambiarVentana(String fxml, ActionEvent event) {
         try {
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource())
+            Stage stage = (Stage) ((Node) event.getSource())
                     .getScene().getWindow();
 
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(fxml)
             );
 
-            stage.setScene(new Scene(loader.load()));
+            Scene scene = new Scene(loader.load(), 900, 600);
+            stage.setScene(scene);
+            stage.setResizable(true);
+            stage.show();
+
         } catch (Exception e) {
+            System.err.println("Error al cargar: " + fxml);
             e.printStackTrace();
         }
     }
@@ -31,7 +37,7 @@ public class MenuController {
 
     public void abrirProductos(ActionEvent event) {
         cambiarVentana(
-                "/com/datasoft/proyectoventas/productos/producto-view.fxml",
+                "/com/datasoft/proyectoventas/productos/productos-view.fxml",
                 event
         );
     }

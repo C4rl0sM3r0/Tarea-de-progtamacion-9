@@ -14,7 +14,15 @@ public class Producto {
         this.descripcion = new SimpleStringProperty(descripcion);
     }
 
-    public StringProperty nombreProperty() { return nombre; }
-    public DoubleProperty precioProperty() { return precio; }
-    public StringProperty descripcionProperty() { return descripcion; }
+    public StringProperty nombreProperty() {
+        return nombre;
+    }
+
+    public DoubleProperty precioProperty() {
+        return precio;
+    }
+
+    public StringProperty descripcionProperty() {
+        return descripcion;
+    }
 }

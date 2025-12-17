@@ -7,39 +7,74 @@ import javafx.scene.control.*;
 
 public class ProductoController {
 
-    @FXML private TextField txtNombre, txtPrecio;
-    @FXML private TextArea txtDescripcion;
+    @FXML
+    private TextField txtNombre;
 
-    @FXML private TableView<Producto> tabla;
-    @FXML private TableColumn<Producto, String> colNombre, colDescripcion;
-    @FXML private TableColumn<Producto, Number> colPrecio;
+    @FXML
+    private TextField txtPrecio;
 
-    private ObservableList<Producto> lista = FXCollections.observableArrayList();
+    @FXML
+    private TextArea txtDescripcion;
+
+    @FXML
+    private TableView<Producto> tabla;
+
+    @FXML
+    private TableColumn<Producto, String> colNombre;
+
+    @FXML
+    private TableColumn<Producto, Double> colPrecio;
+
+    @FXML
+    private TableColumn<Producto, String> colDescripcion;
+
+    private ObservableList<Producto> listaProductos;
 
     @FXML
     public void initialize() {
-        colNombre.setCellValueFactory(c -> c.getValue().nombreProperty());
-        colPrecio.setCellValueFactory(c -> c.getValue().precioProperty());
-        colDescripcion.setCellValueFactory(c -> c.getValue().descripcionProperty());
+        listaProductos = FXCollections.observableArrayList();
 
-        tabla.setItems(lista);
+        colNombre.setCellValueFactory(data -> data.getValue().nombreProperty());
+        colPrecio.setCellValueFactory(data -> data.getValue().precioProperty().asObject());
+        colDescripcion.setCellValueFactory(data -> data.getValue().descripcionProperty());
+
+        tabla.setItems(listaProductos);
     }
 
     @FXML
-    private void guardar() {
-        lista.add(new Producto(
-                txtNombre.getText(),
-                Double.parseDouble(txtPrecio.getText()),
-                txtDescripcion.getText()
-        ));
+    public void guardar() {
+        if (txtNombre.getText().isEmpty() || txtPrecio.getText().isEmpty()) {
+            mostrarAlerta("Campos vacíos", "Complete todos los campos obligatorios");
+            return;
+        }
 
-        limpiar();
+        try {
+            String nombre = txtNombre.getText();
+            double precio = Double.parseDouble(txtPrecio.getText());
+            String descripcion = txtDescripcion.getText();
+
+            Producto producto = new Producto(nombre, precio, descripcion);
+            listaProductos.add(producto);
+
+            limpiar();
+
+        } catch (NumberFormatException e) {
+            mostrarAlerta("Error", "El precio debe ser un número");
+        }
     }
 
     @FXML
-    private void limpiar() {
+    public void limpiar() {
         txtNombre.clear();
         txtPrecio.clear();
         txtDescripcion.clear();
+    }
+
+    private void mostrarAlerta(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }
