@@ -1,0 +1,101 @@
+/* ----------------------------------------------------------------
+   1. ROOT & GENERAL
+   ---------------------------------------------------------------- */
+.root-container {
+    -fx-background-color: #ecf0f1; /* Gris claro elegante */
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ----------------------------------------------------------------
+   2. TARJETA DEL FORMULARIO
+   ---------------------------------------------------------------- */
+.form-card {
+    -fx-background-color: #ffffff; /* Blanco limpio */
+    -fx-background-radius: 15px;
+    -fx-padding: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 18, 0.0, 0, 6);
+    -fx-alignment: center;
+}
+
+.form-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50; /* Azul oscuro */
+    -fx-padding: 0 0 20 0;
+}
+
+/* ----------------------------------------------------------------
+   3. ETIQUETAS Y CAMPOS
+   ---------------------------------------------------------------- */
+.input-label {
+    -fx-text-fill: #34495e; /* Gris azulado */
+    -fx-font-weight: bold;
+}
+
+.input-field {
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #2c3e50;
+    -fx-prompt-text-fill: #95a5a6;
+    -fx-border-color: #dcdfe3;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 8 12;
+}
+
+.input-field:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+    -fx-background-color: #ffffff;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+/* Mensaje de estado */
+.status-message {
+    -fx-text-fill: #27ae60;
+    -fx-font-style: italic;
+    -fx-font-size: 11px;
+    -fx-padding: 10 0 10 0;
+}
+
+/* ----------------------------------------------------------------
+   4. BOTONES
+   ---------------------------------------------------------------- */
+.action-button,
+.secondary-button,
+.danger-button {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 3);
+}
+
+/* Guardar */
+.action-button {
+    -fx-background-color: #2ecc71;
+}
+.action-button:hover {
+    -fx-background-color: #27ae60;
+}
+
+/* Nuevo */
+.secondary-button {
+    -fx-background-color: #3498db;
+}
+.secondary-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Cerrar */
+.danger-button {
+    -fx-background-color: #e74c3c;
+}
+.danger-button:hover {
+    -fx-background-color: #c0392b;
+}
